@@ -6,18 +6,24 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/template/html/v2"
 	"github.com/joho/godotenv"
 )
 
 func main() {
-	err := godotenv.Load()
+	err := godotenv.Load("../.env")
+
 	if err != nil {
 		log.Fatal("Error loading .env")
 	}
 
 	db.Init()
 
-	app := fiber.New()
+	engine := html.New("../templates", ".html")
+
+	app := fiber.New(fiber.Config{
+		Views: engine,
+	})
 
 	routes.Setup(app)
 
