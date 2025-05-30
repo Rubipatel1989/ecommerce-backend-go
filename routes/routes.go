@@ -14,10 +14,12 @@ func Setup(app *fiber.App) {
 
 		name := sess.Get("admin_name")
 		mobile := sess.Get("admin_mobile")
-		return c.Render("dashboard", fiber.Map{
+		return c.Render("layout", fiber.Map{
+			"Title":  "Admin Dashboard",
 			"Name":   name,
 			"Mobile": mobile,
 		})
+
 	})
 
 	// Login form (GET)
