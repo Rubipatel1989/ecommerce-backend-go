@@ -1,6 +1,26 @@
-<aside>
-    <ul>
-        <li><a href="/dashboard">Dashboard</a></li>
-        <li><a href="/products">Manage Products</a></li>
-    </ul>
-</aside>
+{{ define "menu.html" }}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Admin Panel</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/products">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/brands">Brands</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/categories">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-danger" href="/admin/logout">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+{{ end }}

@@ -20,6 +20,12 @@
 </head>
 <body>
   <div class="login-container">
+    {{ if .Error }}
+      <div class="alert alert-danger" role="alert">
+        {{ .Error }}
+      </div>
+    {{ end }}
+
     <h4 class="mb-4 text-center">Admin Login</h4>
     <form action="/admin/login" method="POST">
       <div class="mb-3">
