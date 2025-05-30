@@ -12,4 +12,8 @@ func Setup(app *fiber.App) {
 	})
 
 	app.Post("/admin/login", adminhandler.HandleAdminLogin)
+	app.Get("/admin/dashboard", func(c *fiber.Ctx) error {
+		return c.Render("dashboard", fiber.Map{})
+	})
+
 }

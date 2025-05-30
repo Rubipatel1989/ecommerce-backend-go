@@ -1,26 +1,24 @@
 package admin
 
 import (
-	"ecommerce-backend-go/services/responsex"
-
 	"github.com/gofiber/fiber/v2"
 )
 
-func HandleAdminLogin(c *fiber.Ctx) error {
-	type LoginInput struct {
-		Username string `form:"username"`
-		Password string `form:"password"`
-	}
+type LoginInput struct {
+	Username string `form:"username"`
+	Password string `form:"password"`
+}
 
+func HandleAdminLogin(c *fiber.Ctx) error {
 	var input LoginInput
 	if err := c.BodyParser(&input); err != nil {
-		return responsex.BadRequest(c, "Invalid form input")
+		return c.Status(fiber.StatusBadRequest).SendString("Invalid input")
 	}
 
 	err := ValidateAdminCredentials(input.Username, input.Password)
 	if err != nil {
-		return responsex.Unauthorized(c, err.Error())
+		return c.Status(fiber.StatusUnauthorized).SendString(err.Error())
 	}
 
-	return responsex.GTSuccess(c, true, "Login successful", nil)
+	return c.Redirect("/admin/dashboard")
 }
