@@ -8,6 +8,10 @@ import (
 )
 
 func Setup(app *fiber.App) {
+	app.Get("/", func(c *fiber.Ctx) error {
+		return c.Redirect("/login")
+	})
+
 	// Dashboard route (GET)
 	app.Get("/dashboard", func(c *fiber.Ctx) error {
 		sess, _ := sessionx.Store.Get(c)

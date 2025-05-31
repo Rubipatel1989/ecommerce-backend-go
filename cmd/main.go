@@ -37,6 +37,7 @@ func main() {
 	app := fiber.New(fiber.Config{
 		Views: engine,
 	})
+	app.Static("/static", "../public")
 
 	// Register all routes
 	routes.Setup(app)
