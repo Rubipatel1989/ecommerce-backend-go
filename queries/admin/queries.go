@@ -28,3 +28,8 @@ const GetAdminByIDAndPassword = `
 	FROM users 
 	WHERE id = ? AND type = 1 AND deleted_at IS NULL
 `
+const ValidateAdminLoginQuery = `
+    SELECT password, type, name, mobile 
+    FROM users 
+    WHERE (username = ? OR email = ?) AND is_active = 1
+`

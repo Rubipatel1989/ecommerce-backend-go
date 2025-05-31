@@ -22,7 +22,7 @@ func HandleAdminLogin(c *fiber.Ctx) error {
 
 	name, mobile, err := ValidateAdminCredentials(input.Username, input.Password)
 	if err != nil {
-		redirectURL := fmt.Sprintf("/admin/login?error=%s", url.QueryEscape(err.Error()))
+		redirectURL := fmt.Sprintf("/login?error=%s", url.QueryEscape(err.Error()))
 		return c.Redirect(redirectURL)
 	}
 
@@ -32,5 +32,5 @@ func HandleAdminLogin(c *fiber.Ctx) error {
 	sess.Set("admin_mobile", mobile)
 	sess.Save()
 
-	return c.Redirect("/admin/dashboard")
+	return c.Redirect("/dashboard")
 }

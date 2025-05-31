@@ -3,6 +3,7 @@ package admin
 import (
 	"database/sql"
 	"ecommerce-backend-go/db"
+	"ecommerce-backend-go/queries/admin"
 	"errors"
 
 	"golang.org/x/crypto/bcrypt"
@@ -12,10 +13,7 @@ func ValidateAdminCredentials(usernameOrEmail, password string) (string, string,
 	var hashedPwd, name, mobile string
 	var userType int
 
-	err := db.DB.QueryRow(`
-		SELECT password, type, name, mobile FROM users 
-		WHERE (username = ? OR email = ?) AND is_active = 1
-	`, usernameOrEmail, usernameOrEmail).Scan(&hashedPwd, &userType, &name, &mobile)
+	err := db.DB.QueryRow(admin.ValidateAdminLoginQuery, usernameOrEmail, usernameOrEmail).Scan(&hashedPwd, &userType, &name, &mobile)
 
 	if err == sql.ErrNoRows {
 		return "", "", errors.New("invalid username/email or inactive account")
