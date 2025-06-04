@@ -8,9 +8,9 @@ import (
 
 func DashboardHandler(w http.ResponseWriter, r *http.Request) {
 	files := []string{
-		"templates/header.html",
-		"templates/menu.html",
-		"templates/footer.html",
+		"templates/layout/header.html",
+		"templates/layout/menu.html",
+		"templates/layout/footer.html",
 	}
 	tmpl, err := template.ParseFiles(files...)
 	if err != nil {
@@ -18,5 +18,5 @@ func DashboardHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Could not load dashboard", http.StatusInternalServerError)
 		return
 	}
-	tmpl.ExecuteTemplate(w, "header.html", nil)
+	tmpl.ExecuteTemplate(w, "layout/header.html", nil)
 }
