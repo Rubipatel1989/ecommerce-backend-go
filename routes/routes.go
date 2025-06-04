@@ -23,13 +23,12 @@ func Setup(app *fiber.App) {
 			"Name":   name,
 			"Mobile": mobile,
 		})
-
 	})
 
 	// Login form (GET)
 	app.Get("/login", func(c *fiber.Ctx) error {
 		errorMsg := c.Query("error", "")
-		return c.Render("admin_login", fiber.Map{
+		return c.Render("admin/login", fiber.Map{
 			"Error": errorMsg,
 		})
 	})
