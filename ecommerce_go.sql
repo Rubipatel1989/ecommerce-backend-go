@@ -34,7 +34,7 @@ CREATE TABLE `users` (
   `name` varchar(100) DEFAULT NULL,
   `mobile` varchar(13) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
-  `is_active` tinyint(1) DEFAULT '1' COMMENT '1=>Active, 2=>Block, 3=>Deleted',
+  `status` tinyint(1) DEFAULT '1' COMMENT '1=>Active, 2=>Block, 3=>Deleted',
   `type` tinyint NOT NULL DEFAULT '3' COMMENT '1=>Admin,2=>Operation, 3=>Customer',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
@@ -44,7 +44,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `name`, `mobile`, `password`, `is_active`, `type`, `created_at`, `updated_at`) VALUES
+INSERT INTO `users` (`id`, `username`, `email`, `name`, `mobile`, `password`, `status`, `type`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'admin@example.com', 'Admin User', '8010043297', '$2a$10$7zquPizpZr.M0OAvMWy8HOik4MsPChLkBe1Uque0TUQgya9hH5kmK', 1, 1, '2025-05-30 00:53:52', '2025-05-30 00:54:12');
 
 --

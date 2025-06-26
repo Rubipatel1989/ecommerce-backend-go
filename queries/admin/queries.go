@@ -31,5 +31,5 @@ const GetAdminByIDAndPassword = `
 const ValidateAdminLoginQuery = `
     SELECT password, type, name, mobile 
     FROM users 
-    WHERE (username = ? OR email = ?) AND is_active = 1
+    WHERE (username = ? OR email = ?) AND status = 1
 `
